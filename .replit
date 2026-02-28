@@ -1,0 +1,10 @@
+run = "node server/server.js"
+entrypoint = "README.md"
+modules = ["nodejs-20"]
+
+[nix]
+channel = "stable-24_11"
+packages = ["cowsay", "nix-output-monitor"]
+
+[agent]
+expertMode = true
