@@ -17,10 +17,10 @@ module.exports = function (db) {
         }
        
        const hashedPassword = await bcrypt.hash(password, 10);
-       const user = { username, password: hashedPassword, createdAt: new Date() };
+       const user = { username, password: hashedPassword, role: "user", createdAt: new Date(), lastLogin: new Date()};
        const result = await db.collection('users').insertOne(user);
        
-      const token = jwt.sign({ userId: result.insertedId }, process.env.JWT_SECRET, { expiresIn: '1d' })
+      const token = jwt.sign({ userId: result.insertedId, role: "user" }, process.env.JWT_SECRET, { expiresIn: '1d' })
        
        res.cookie('token', token, {
           maxAge: 1000 * 60 * 60 * 24,
@@ -29,7 +29,7 @@ module.exports = function (db) {
           sameSite: 'strict'
         });
        
-       res.status(201).json({ message: 'User created successfully' });
+       res.status(201).json({ message: 'User created successfully', userId: result.insertedId });
      }  catch (err) {
        console.error(err);
        res.status(500).json({ message: 'Internal server error' });
