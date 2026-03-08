@@ -23,7 +23,7 @@ const client = new MongoClient(URI, {
 async function connectDB() {
   try {
     await client.connect();
-    const db = client.db('Thegod6599DB');
+    const db = client.db('Project1DB');
     console.log("Connected to MongoDB!");
 
     const loginRouter = require('./routes/login')(db);
@@ -52,11 +52,7 @@ async function connectDB() {
 
     app.get('/home', (req, res) => {
       res.sendFile(path.join(__dirname, '../client/HTML/home.html'));
-    });
-
-    app.get('/home.html', (req, res) => {
-      res.sendFile(path.join(__dirname, '../client/HTML/home.html'));
-    });
+    })
 
     app.listen(5000, () => console.log('Server running on port 5000'));
   } catch (err) {
