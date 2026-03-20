@@ -30,11 +30,13 @@ async function connectDB() {
     const signUpRouter = require('./routes/signup')(db);
     const meRouter = require('./routes/me')(db);
     const logoutRouter = require('./routes/logout')(db);
+    const projectsRouter = require('./routes/projects')(db);
 
     app.use('/auth', loginRouter);
     app.use('/auth', signUpRouter);
     app.use('/auth', meRouter);
     app.use('/auth', logoutRouter);
+    app.use('/projects', projectsRouter);
 
     
     app.get('/', (req, res) => {
