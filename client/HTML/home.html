@@ -8,7 +8,39 @@
 </head>
 <body>
   <h1 id='welcome'></h1>
+  
   <button id='logout' onclick='logout()'>Logout</button>
+  
+  <button id='createProjects' onclick='displayProjectCreationForm()'>Create Project</button>
+  <div id='projectCreationForm' class='hidden'>
+    <h2>Create Projects</h2>
+    <button id='closeProjectCreationForm' onclick='closeProjectCreationForm()'>X</button>
+    <form id='createProjectForm'>
+      <input type='text' id='projectName' placeholder='Project Name' required>
+      <input type='text' id='projectDescription' placeholder='Project Description' required>
+      <input type='date' id='projectDueDate' placeholder='Project Due Date' required>
+      <button type='submit'>Create</button>
+    </form>
+  </div>
+
+  <div id='deleteProjectForm' class='hidden'>
+    <h2>DELETE</h2>
+    <p>Please confirm that you would like to delete this project</p>
+    <button id='confirmDelete'>Confirm</button>
+    <button id='cancelDelete'>Cancel</button>
+  </div>
+
+  <div id='editProjectForm' class='hidden'>
+    <h2>Edit Project</h2>
+    <button id='closeEditProjectForm'>X</button>
+    <form id='editProjectFormElement'>
+      <input type='text' id='editProjectName' placeholder='Project Name' required>
+      <input type='text' id='editProjectDescription' placeholder='Project Description' required>
+      <input type='date' id='editProjectDueDate' placeholder='Project Due Date' required>
+      <button type='submit'>Save Changes</button>
+    </form>
+  </div>
+  <ul id="projectsList"></ul>
   <script src="/JS/home.js"></script>
 </body>
 </html>

@@ -14,6 +14,11 @@ module.exports = function(db) {
       if (isNaN(deadline.getTime())) {
         return res.status(400).json({ message: 'Invalid deadline format' });
       }
+      const today = new Date();
+      today.setHours(0, 0, 0, 0);
+      if (deadline < today) {
+        return res.status(400).json({ message: 'Invalid deadline' });
+      }
       
       const newProject = {
         createdBy: req.userId,
@@ -64,6 +69,11 @@ module.exports = function(db) {
       const deadline = new Date(projectDeadline);
       if (isNaN(deadline.getTime())) {
          return res.status(400).json({ message: 'Invalid deadline format' });
+      }
+      const today = new Date()
+      today.setHours(0, 0, 0, 0)
+      if (deadline < today) {
+        return res.status(400).json({ message: 'Invalid deadline' })
       }
 
       const updatedProject = {
