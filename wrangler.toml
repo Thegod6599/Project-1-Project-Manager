@@ -1,0 +1,12 @@
+name = "my-project"       # Change to your project name
+type = "javascript"       # Using a basic JS Worker
+
+# Specify your static frontend folder
+site = { 
+  bucket = "./client",     # Path to your frontend files
+  entry-point = "."        # Root entry point
+}
+
+# Optional: environment variables (like your backend API URL)
+[env.production]
+API_BASE_URL = "https://your-backend-url.com"
