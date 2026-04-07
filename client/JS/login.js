@@ -24,7 +24,7 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
       return;
     }
 
-    const response = await fetch('/auth/login', {
+    const response = await fetch('https://project-1-project-manager.onrender.com/auth/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

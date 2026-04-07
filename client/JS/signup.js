@@ -25,7 +25,7 @@ document.getElementById('signupForm').addEventListener('submit', async (e) => {
       return;
     }
 
-    const response = await fetch('/auth/signup', {
+    const response = await fetch('https://project-1-project-manager.onrender.com/auth/signup', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

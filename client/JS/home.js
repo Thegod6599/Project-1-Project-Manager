@@ -2,7 +2,7 @@ async function checkAuth() {
   try {
     const welcome = document.getElementById('welcome')
     
-    const response = await fetch('/auth/me',{
+    const response = await fetch('https://project-1-project-manager.onrender.com/auth/me',{
       method: 'GET',
       credentials: 'include'
     })
@@ -24,7 +24,7 @@ checkAuth()
 
 async function logout() {
   try {
-    const response = await fetch('/auth/logout', {
+    const response = await fetch('https://project-1-project-manager.onrender.com/auth/logout', {
       method: 'POST',
       credentials: 'include'
     })
@@ -66,7 +66,7 @@ document.getElementById('editProjectFormElement').addEventListener('submit', asy
   }
 
   try {
-    const response = await fetch(`/projects/${projectIdToEdit}`, {
+    const response = await fetch(`https://project-1-project-manager.onrender.com/projects/${projectIdToEdit}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json'
@@ -101,7 +101,7 @@ document.getElementById('confirmDelete').addEventListener('click', async () => {
   if (!projectIdToDelete) {return}
 
   try {
-    const response = await fetch(`/projects/${projectIdToDelete}`, {
+    const response = await fetch(`https://project-1-project-manager.onrender.com/projects/${projectIdToDelete}`, {
       method: 'DELETE',
       credentials: 'include'
     })
@@ -163,7 +163,7 @@ function closeProjectPopup() {
 async function loadProjects() {
   const projectsList = document.getElementById('projectsList');
   try {
-    const response = await fetch('/projects', {
+    const response = await fetch('https://project-1-project-manager.onrender.com/projects', {
       method: 'GET',
       credentials: 'include'
     })
@@ -232,7 +232,7 @@ document.getElementById('createProjectForm').addEventListener('submit', async (e
   }
   
   try {
-    const response = await fetch('/projects', {
+    const response = await fetch('https://project-1-project-manager.onrender.com/projects', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
