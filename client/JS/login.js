@@ -1,3 +1,15 @@
+const errorMessage = document.getElementById('errorMessage')
+function showError(message) {
+  errorMessage.textContent = message
+  errorMessage.classList.remove('hidden')
+}
+function hideError() {
+  errorMessage.classList.add('hidden')
+  errorMessage.textContent = ''
+}
+
+
+
 document.getElementById('loginForm').addEventListener('submit', async (e) => {
   e.preventDefault();
   
@@ -8,7 +20,7 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
     const password = passwordInput.value;
 
     if (!username || !password) {
-      alert('Please enter both username and password.');
+      showError('Please enter both username and password.');
       return;
     }
 
@@ -26,11 +38,12 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
       usernameInput.value = '';
       passwordInput.value = '';
       window.location.href = '/home';
+      hideError()
     } else {
-      alert(data.message);
+      showError(data.message);
     }
   } catch (err) {
     console.error('Error:', err);
-    alert('An error occurred. Please try again.');
+    showError('An error occurred. Please try again.');
   }
 });

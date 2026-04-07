@@ -1,0 +1,85 @@
+body {
+  background: #1f6f78;
+  color: white;
+  font-family: Arial, sans-serif;
+}
+
+nav {
+  display: flex;
+  justify-content: flex-end;
+  padding: 10px;
+  background-color: #004751
+}
+nav button {
+  background-color: #1f6f78;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin: 0 10px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+nav button:hover {
+  background-color: #118a7e;
+}
+nav button:active {
+  background-color: #93e4c1
+}
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 50vh;
+  padding: 20px;
+  background-color: #004751;
+  border-radius: 10px;
+  width: 300px;
+  margin: 0 auto;
+}
+#loginContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #1f6f78;
+}
+input {
+  margin: 10px 0;
+  padding: 10px;
+  width: 80%;
+  border: none;
+  border-radius: 5px;
+}
+
+#submitButton {
+  background-color: #1f6f78;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin: 10px 0;
+  cursor: pointer;
+  border-radius: 5px;
+  width: 80%;
+}
+#submitButton:hover {
+  background-color: #118a7e;
+}
+#submitButton:active {
+  background-color: #93e4c1
+}
+
+#signupLink {
+  color: #93e4c1;
+  text-decoration: none;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.hidden {
+  display: none
+}
+#errorMessage {
+  color: #ff4d4d
+}

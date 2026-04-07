@@ -61,7 +61,7 @@ document.getElementById('editProjectFormElement').addEventListener('submit', asy
   const projectDeadline = document.getElementById('editProjectDueDate').value
 
   if (!projectName || !projectDeadline) {
-    alert('Project Name and Deadline are required')
+    showErrorMessage('Project Name and Deadline are required', 'errorMessageEdit')
     return
   }
 
@@ -76,13 +76,14 @@ document.getElementById('editProjectFormElement').addEventListener('submit', asy
     })
     const data = await response.json();
     if (response.ok) {
-      alert('Project updated successfully!')
       projectIdToEdit = null
       loadProjects()
+      hideErrorMessage('errorMessageEdit')
       closeEditProjectForm()
     }
   } catch (err) {
     console.error('Error:', err)
+    showErrorMessage('An error occurred. Please try again.', 'errorMessageEdit')
   }
 })
 
@@ -110,14 +111,54 @@ document.getElementById('confirmDelete').addEventListener('click', async () => {
       alert('Project deleted successfully!')
       projectIdToDelete = null
       loadProjects()
+      hideErrorMessage('errorMessageDelete')
       closeDeleteProjectForm()
     } else {
-      alert(data.message)
+      showErrorMessage(data.message, 'errorMessageDelete')
     }
   } catch (err) {
     console.error('Error:', err);
+    showErrorMessage('An error occurred. Please try again.', 'errorMessageDelete')
   }
 })
+
+
+function showErrorMessage(message, elementId) {
+  const errorMessage = document.getElementById(elementId);
+  errorMessage.textContent = message;
+  errorMessage.classList.remove('hidden');
+}
+function hideErrorMessage(elementId) {
+  const errorMessage = document.getElementById(elementId);
+  errorMessage.textContent = ''
+  errorMessage.classList.add('hidden');
+}
+
+
+function openProjectPopup(project) {
+  const projectPopup = document.getElementById('projectPopup')
+  const projectNamePopup = document.getElementById('projectNamePopup')
+  const projectDescriptionPopup = document.getElementById('projectDescriptionPopup')
+  const projectDeadlinePopup = document.getElementById('projectDeadlinePopup')
+
+  projectNamePopup.textContent = project.projectName
+  projectDescriptionPopup.textContent = project.projectDescription
+  projectDeadlinePopup.textContent = new Date(project.deadline).toISOString().split('T')[0];
+  
+  projectPopup.classList.remove('hidden')
+}
+function closeProjectPopup() {
+  const projectPopup = document.getElementById('projectPopup')
+  const projectNamePopup = document.getElementById('projectNamePopup')
+  const projectDescriptionPopup = document.getElementById('projectDescriptionPopup')
+  const projectDeadlinePopup = document.getElementById('projectDeadlinePopup')
+
+  projectNamePopup.textContent = ''
+  projectDescriptionPopup.textContent = ''
+  projectDeadlinePopup.textContent = ''
+  
+  projectPopup.classList.add('hidden')
+}
 
 async function loadProjects() {
   const projectsList = document.getElementById('projectsList');
@@ -136,23 +177,35 @@ async function loadProjects() {
         const deleteButton = document.createElement('button');
         const nameSpan = document.createElement('span');
         const editButton = document.createElement('button')
+        const buttonGroup = document.createElement('div')
+
+
+        nameSpan.classList.add('projectName')
+        editButton.classList.add('editButton')
+        deleteButton.classList.add('deleteButton')
         editButton.textContent = 'Edit'
         editButton.addEventListener('click', () => openEditProjectForm(project._id))
         nameSpan.textContent = project.projectName
+        nameSpan.addEventListener('click', () => openProjectPopup(project))
         deleteButton.textContent = 'Delete';
         deleteButton.addEventListener('click', () => openDeleteProjectForm(project._id));
+
+        buttonGroup.classList.add('buttonGroup')
+        buttonGroup.appendChild(editButton)
+        buttonGroup.appendChild(deleteButton)
+        
         li.appendChild(nameSpan)
-        li.appendChild(document.createTextNode(' '))
-        li.appendChild(deleteButton);
-        li.appendChild(document.createTextNode(' '))
-        li.appendChild(editButton)
+        li.appendChild(buttonGroup);
         projectsList.appendChild(li);
+        
+        hideErrorMessage('errorMessageLoad')
       });
     } else {
-      alert(data.message);
+      showErrorMessage(data.message, 'errorMessageLoad');
     }
   } catch (err) {
     console.error('Error:', err);
+    showErrorMessage('An error occurred. Please try again.', 'errorMessageLoad')
   }
 }
 loadProjects()
@@ -174,7 +227,7 @@ document.getElementById('createProjectForm').addEventListener('submit', async (e
   const projectDeadline = document.getElementById('projectDueDate').value;
 
   if (!projectName || !projectDeadline) {
-    alert('Project Name and Deadline are required');
+    showErrorMessage('Project Name and Deadline are required', 'errorMessageCreate');
     return;
   }
   
@@ -193,10 +246,12 @@ document.getElementById('createProjectForm').addEventListener('submit', async (e
         loadProjects()
         closeProjectCreationForm()
         document.getElementById('createProjectForm').reset();
+        hideErrorMessage('errorMessageCreate')
       } else {
-        alert(data.message)
+        showErrorMessage(data.message, 'errorMessageCreate')
       }
   } catch (err) {
     console.error('Error:', err);
+    showErrorMessage('An error occurred. Please try again.', 'errorMessageCreate')
   }
 });

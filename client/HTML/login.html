@@ -7,12 +7,19 @@
   <title>Login</title>
 </head>
 <body>
+  <nav>
+  <button id='backButton' onclick="window.location.href = '/'">Back</button>
+  </nav>
+  <div id='loginContainer'>
   <form id="loginForm">
     <h1>Login</h1>
     <input type="text" id="username" placeholder="Username" required>
     <input type="password" id="password" placeholder="Password" required>
+    <p id='errorMessage' class='hidden'>A</p>
     <button type="submit" id="submitButton" onclick="login()">Login</button>
+    <p>Don't have an account? <a href="/signup" id='signupLink'>Sign Up</a></p>
   </form>
+  </div>
 <script src="/JS/login.js"></script>
 </body>
 </html>

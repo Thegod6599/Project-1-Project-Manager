@@ -1,8 +1,330 @@
 body {
-  background: white;
-  color: black;
+  background: #118a7e;
+  color: white;
+  font-family: Arial, sans-serif;
 }
 
 .hidden {
   display: none
+}
+
+#projectCreationForm {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #1f6f78;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  width: 300px;
+  text-align: center;
+}
+#createProjectForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+#createProjectForm input {
+  margin: 10px 0;
+  padding: 10px;
+  width: 80%;
+  border: none;
+  border-radius: 5px;
+}
+#createProjectForm button {
+  background: #00434c;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin: 10px 0;
+  cursor: pointer;
+  border-radius: 5px;
+  width: 80%;
+}
+#createProjectForm button:hover {
+  background-color: #118a7e;
+}
+#createProjectForm button:active {
+  background-color: #93e4c1
+}
+#closeProjectCreationForm {
+  background-color: #00434c;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 16px;
+  cursor: pointer
+}
+#closeProjectCreationForm:hover {
+  color: #118a7e
+}
+#closeProjectCreationForm:active {
+  color: #93e4c1
+}
+
+#deleteProjectForm {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #1f6f78;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  width: 300px;
+  text-align: center;
+}
+#deleteProjectForm button {
+   background: #00434c;
+   color: white;
+   border: none;
+   padding: 10px 20px;
+   margin: 10px 0;
+   cursor: pointer;
+   border-radius: 5px;
+   width: 80%;
+}
+#deleteProjectForm button:hover {
+  background-color: #118a7e;
+}
+#deleteProjectForm button:active {
+  background-color: #93e4c1
+}
+
+#editProjectForm {
+   position: fixed;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+   background-color: #1f6f78;
+   padding: 20px;
+   border-radius: 10px;
+   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+   z-index: 1000;
+   width: 300px;
+   text-align: center;
+}
+#editProjectFormElement {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   padding: 20px;
+}
+#editProjectFormElement input {
+   margin: 10px 0;
+   padding: 10px;
+   width: 80%;
+   border: none;
+   border-radius: 5px;
+}
+#editProjectFormElement button {
+  background: #00434c;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin: 10px 0;
+  cursor: pointer;
+  border-radius: 5px;
+  width: 80%;
+}
+#editProjectFormElement button:hover {
+  background-color: #118a7e;
+}
+#editProjectFormElement button:active {
+  background-color: #93e4c1
+}
+#closeEditProjectForm {
+   background-color: #1f6f78;
+   position: absolute;
+   top: 10px;
+   right: 10px;
+   background: none;
+   border: none;
+   color: white;
+   font-size: 16px;
+   cursor: pointer
+}
+#closeEditProjectForm:hover {
+  color: #118a7e
+}
+#closeEditProjectForm:active {
+  color: #93e4c1
+}
+
+#projectsList {
+  list-style-type: none;
+  padding: 20px;
+  margin: 20px auto;
+  width: 80%;
+  background-color: #1f6f78;
+  border-radius: 10px;
+}
+
+.nameSpan {
+  padding: 10px;
+}
+#projectsList li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #00434c;
+}
+#projectsList li:last-child {
+  border-bottom: none;
+}
+#projectsList li div button {
+  background: #00434c;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-left: 10px
+}
+#projectsList li div button:hover {
+  background-color: #118a7e;
+}
+#projectsList li div button:active {
+  background-color: #93e4c1
+}
+nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  background-color: #004751
+}
+nav h5 {
+  color: white;
+  margin: 0;
+  padding: 10px
+}
+nav div button {
+  background-color: #1f6f78;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin: 0 10px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+nav div button:hover {
+  background-color: #118a7e;
+}
+nav div button:active {
+  background-color: #93e4c1
+}
+
+#projectPopup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #1f6f78;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  width: 300px;
+  text-align: center;
+}
+#closeProjectPopup {
+  background-color: #1f6f78;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 16px;
+  cursor: pointer
+}
+#closeProjectPopup:hover {
+  color: #118a7e
+}
+#closeProjectPopup:active {
+  color: #93e4c1
+}
+
+#errorMessageCreate,
+#errorMessageEdit,
+#errorMessageDelete,
+#errorMessageLoad {
+  color: #ff4d4d;
+  margin-top: 10px
+}
+
+@media (max-width: 600px) {
+  nav {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  nav div {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  nav div button {
+    width: 90%;
+    margin: 5px auto;
+  }
+
+  #projectsList {
+    width: 95%;
+    padding: 10px;
+  }
+
+  #projectsList li {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  #projectsList li div {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  #projectsList li div button {
+    margin-left: 5px;
+  }
+
+  #projectCreationForm,
+  #editProjectForm,
+  #deleteProjectForm,
+  #projectPopup {
+    width: 90%;
+    max-width: 320px;
+    padding: 15px;
+  }
+
+  #createProjectForm input,
+  #editProjectFormElement input,
+  #createProjectForm button,
+  #editProjectFormElement button,
+  #deleteProjectForm button {
+    width: 100%;
+  }
+
+  body {
+    font-size: 14px;
+  }
+
+  h1, h2, h3, h4, h5 {
+    text-align: center;
+  }
 }
